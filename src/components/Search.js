@@ -1,4 +1,5 @@
 import React from 'react'
+import { Col, Form, FormControl, Navbar } from 'react-bootstrap'
 //import PropTypes from 'prop-types'
 
 export class Search extends React.Component {
@@ -9,9 +10,16 @@ export class Search extends React.Component {
   render() {
     console.log("Search render");
     return (
-      <React.Fragment>
-        <input type="text" name="query"  autoComplete="off" defaultValue={this.props.query} onChange={this.onChange}  placeholder="Поиск по имени или номеру" />
-      </React.Fragment>
+      <Navbar bg="light" expand="lg">
+        <Col sm="auto">
+          <Navbar.Brand href="/">Телефонный справочник</Navbar.Brand>
+        </Col>
+        <Col>
+          <Form>
+            <FormControl type="text" name="query"  placeholder="Поиск по имени или номеру" className=""  defaultValue={this.props.query} onChange={this.onChange}  />
+          </Form>
+        </Col>
+      </Navbar>
 
     )
   }

@@ -5,25 +5,16 @@ import AddItemContainer from './containers/AddItemContainer'
 
 
 class App extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     document.title = "Телефонный справочник"
   }
 
   render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Телефонный справочник</h1>
-        </header>
-        <main>
-          <SearchContainer />
-
-          <div className="middle">
-            <ListContainer />
-            <AddItemContainer />
-          </div>
-
-        </main>
+        <SearchContainer />
+        <AddItemContainer />
+        <ListContainer />
       </div>
     )
   }

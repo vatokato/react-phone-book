@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Table } from 'react-bootstrap'
 
 export class List extends React.Component {
   handleClick = (id) => {
@@ -13,20 +14,30 @@ export class List extends React.Component {
   render() {
     console.log("list render");
     return (
-      <React.Fragment>
-        <div className="phone-list">
+      <Table responsive>
+        <thead>
+          <tr>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
           {
             this.props.filteredItems.map((item)=>
-              <div className="item" key={item.id}>
-                <span dangerouslySetInnerHTML={this.createMarkup(item.name)} className="name" />
-                -
-                <span dangerouslySetInnerHTML={this.createMarkup(item.phone)} className="phone" />
-                 (<span className="remove" onClick={()=>this.handleClick(item.id)}>x</span>)
-              </div>
+              <tr key={item.id}>
+                <td dangerouslySetInnerHTML={this.createMarkup(item.name)} className="name" />
+                <td dangerouslySetInnerHTML={this.createMarkup(item.phone)} className="phone" />
+                <td>
+                  <button type="button" className="close float-none" aria-label="Close" onClick={()=>this.handleClick(item.id)}>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </td>
+              </tr>
             )
           }
-        </div>
-      </React.Fragment>
+        </tbody>
+      </Table>
     )
   }
 }

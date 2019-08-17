@@ -1,4 +1,5 @@
 import React from 'react'
+import { Alert, Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap'
 
 export class AddItem extends React.Component {
   submit = (e) => {
@@ -19,12 +20,23 @@ export class AddItem extends React.Component {
     const {errors} = this.props;
 
     return (
-      <form action="" onSubmit={this.submit}>
-        <input type="text" name="name" autoComplete="off" placeholder="Имя" className={(errors.name ? "error" : "")} />
-        <input type="tel" name="phone" autoComplete="off" placeholder="Телефон" className={(errors.phone ? "error" : "")}/>
-        <input type="submit" value="Добавить запись"/>
-        {(errors.form) ? <div className="form-error">{errors.form}</div> : ''}
-      </form>
+      <Container className="mt-4 mb-4">
+        <Row>
+          <Col md={{ span: 8, offset: 2 }}>
+            <form action="" onSubmit={this.submit}>
+              <InputGroup>
+                <FormControl name="name" autoComplete="off" placeholder="Имя" isInvalid={(errors.name ? "true" : "")}  />
+                <FormControl name="phone" autoComplete="off" placeholder="Телефон" isInvalid={(errors.phone ? "true" : "")} />
+
+                <InputGroup.Append>
+                  <Button variant="outline-success" type="submit">Добавить</Button>
+                </InputGroup.Append>
+              </InputGroup>
+            </form>
+            {(errors.form) ? <Alert variant="danger" className="mt-2">{errors.form}</Alert> : ''}
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
