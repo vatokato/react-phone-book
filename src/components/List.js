@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 export class List extends React.Component {
   handleClick = (id) => {
-    console.log(id, this.props.removeItem);
     this.props.removeItem(id);
   }
 

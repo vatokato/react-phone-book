@@ -27,6 +27,12 @@ export const list = (state=initialState, action) => {
       if(!action.payload.name) errors.name = "не заполнено имя";
       if(!action.payload.phone) errors.phone = "не заполнен телефон";
 
+      //проверка номера телефона
+      if(action.payload.phone.match(/[^0-9-)(+]/i)) {
+        errors.phone = "только цифры";
+        errors.form = "только цифры";
+      }
+
       //возвращаем ошибки
       if(Object.keys(errors).length>0) return {...state, errors};
 
