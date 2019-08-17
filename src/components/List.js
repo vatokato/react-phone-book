@@ -14,7 +14,6 @@ export class List extends React.Component {
     console.log("list render");
     return (
       <React.Fragment>
-        <h3>{this.props.test}</h3>
         <div className="phone-list">
           {
             this.props.filteredItems.map((item)=>
@@ -33,6 +32,5 @@ export class List extends React.Component {
 }
 
 List.propTypes = {
-  test: PropTypes.string.isRequired,
   filteredItems: PropTypes.array.isRequired,
 }

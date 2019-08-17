@@ -1,7 +1,6 @@
 import { localDB } from '../utils/localDB'
 
 const initialState = {
-  test: 'list test',
   items: localDB.getItems(),
   filteredItems: [],
   errors: {}

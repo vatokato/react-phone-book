@@ -1,5 +1,4 @@
 const initialState = {
-  test: 'search test',
   query: ''
 }
 
