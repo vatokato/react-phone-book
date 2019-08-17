@@ -5,11 +5,15 @@ import AddItemContainer from './containers/AddItemContainer'
 
 
 class App extends React.Component {
+  componentDidMount(){
+    document.title = "Телефонный справочник"
+  }
+
   render () {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Телефонная книга</h1>
+          <h1 className="App-title">Телефонный справочник</h1>
         </header>
         <main>
           <SearchContainer />
