@@ -23,20 +23,20 @@ class ListContainer extends React.Component {
 const mapStateToProps = store => {
   console.log("mapStateToProps", store);
   let filteredItems = false;
-  if(store.search.query) {
-    store.search.query = store.search.query.trim();
+  let q = store.search.query.trim();
+  if(q) {
     console.time("filtered");
     filteredItems = [];
     store.list.items.forEach((item)=>{
-      let ind = item.name.toLowerCase().indexOf(store.search.query.toLowerCase());
+      let ind = item.name.toLowerCase().indexOf(q.toLowerCase());
       if(ind > -1) {
         let tmpArr = item.name.split('');
         tmpArr.splice(ind,0,'<b>');
-        tmpArr.splice(ind+store.search.query.length+1,0,'</b>');
+        tmpArr.splice(ind+q.length+1,0,'</b>');
         filteredItems.push({...item, name:tmpArr.join('')});
       }
 
-      ind = item.phone.toLowerCase().replace(/[^0-9]/gim,'').indexOf(store.search.query.toLowerCase());
+      ind = item.phone.toLowerCase().replace(/[^0-9]/gim,'').indexOf(q.toLowerCase());
       if( ind >-1 ) {
         //let tmpArr = item.phone.split('');
         //tmpArr.splice(ind,0,'<b>');
