@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export const list = (state=initialState, action) => {
-  console.log("list reduce", state, action);
   switch (action.type) {
     case 'ADD_ITEM_ERROR':
       return {...state, errors:action.payload, status: 'error' };
