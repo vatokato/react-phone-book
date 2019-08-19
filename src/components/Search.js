@@ -4,7 +4,7 @@ import { Col, Form, FormControl, Navbar } from 'react-bootstrap'
 
 export class Search extends React.Component {
   onChange = (e) => {
-    this.props.setQuery(e.target.value);
+    this.props.setQuery(e.target.value.trim());
   }
 
   render() {
