@@ -26,7 +26,7 @@ const mapStateToProps = store => {
   let q = store.search.query.trim();
   store.list.filteredItems = [];
   if(q) {
-    console.time("filtered");
+    console.time("filtered", q);
     filteredItems = [];
     store.list.items.forEach((item)=>{
       let ind = item.name.toLowerCase().indexOf(q.toLowerCase());
