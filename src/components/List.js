@@ -12,7 +12,7 @@ export class List extends React.Component {
   }
 
   render() {
-    console.log("list render");
+    console.log("list render" ,this.props);
     return (
       <Table responsive>
         <thead>

@@ -21,6 +21,7 @@ class ListContainer extends React.Component {
 }
 
 const mapStateToProps = store => {
+  console.log("mapStateToProps", store);
   let filteredItems = false;
   if(store.search.query) {
     store.search.query = store.search.query.trim();

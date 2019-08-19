@@ -12,5 +12,39 @@ export const localDB = {
 
   saveItems : (arr) => {
     localStorage.phoneList = JSON.stringify( arr );
+  },
+
+  saveItem: (item, cbSuccess, cbError) => {
+    let items = JSON.parse(localStorage.phoneList);
+
+    item.name = item.name.trim();
+    item.phone = item.phone.trim();
+    let errors = {};
+
+    // проверка на дубли
+    let double = items.find((arrItem)=>{
+      return item.name===arrItem.name || item.phone===arrItem.phone;
+    });
+
+    if(double) {
+      errors.form = "запись с таким именем или номером уже существует";
+    }
+
+    //проверка на заполненность имени и телефона
+    if(!item.name) errors.name = "не заполнено имя";
+    if(!item.phone) errors.phone = "не заполнен телефон";
+
+    //проверка номера телефона
+    if(item.phone.match(/[^0-9-)(+]/i)) {
+      errors.phone = "только цифры";
+      errors.form = "только цифры";
+    }
+
+    if(Object.keys(errors).length>0) {
+      return cbError(errors);
+    }
+
+    localStorage.phoneList = JSON.stringify( [...items, ...[item]] );
+    return cbSuccess(item);
   }
 }
