@@ -24,6 +24,7 @@ const mapStateToProps = store => {
   console.log("mapStateToProps", store);
   let filteredItems = false;
   let q = store.search.query.trim();
+  store.list.filteredItems = [];
   if(q) {
     console.time("filtered");
     filteredItems = [];
